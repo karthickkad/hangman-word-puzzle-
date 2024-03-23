@@ -2,9 +2,9 @@ import time
 import random
 
 def choose_word():
-    words = ['python', 'programming', 'treasure', 'creative', 'medium', 'horror']
+    words = ['python', 'programming', 'treasure', 'creative', 'medium', 'horror'] #words used 
     return random.choice(words)
-
+#gessing the character
 def wordDisplay(word, guesses):
     display_word = ''
     for char in word:
@@ -13,21 +13,15 @@ def wordDisplay(word, guesses):
         else:
             display_word += '_ '
     return display_word
-
+#update word with '_ '
 def winningCondition(updated_word, turns):
-    # Update your code below this line
+    # result
     if '_' not in updated_word:
         result = 1
         return result
     if turns == 0:
         result = 0
         return result
-
-
-
-
-
-
 
 if __name__ == '__main__':
     name = input("What is your name? ")
@@ -41,7 +35,7 @@ if __name__ == '__main__':
     guesses = ''
     
     while turns > 0:
-        print("\nYou have", turns, 'guesses remaining')
+        print("\nYou have", turns, 'guesses remaining') 
         print(wordDisplay(word, guesses))
         guess = input("\nguess a character: ").lower()
         
@@ -50,14 +44,14 @@ if __name__ == '__main__':
             continue
         else:
             guesses += guess
-    
         if guess not in word:
             print("\nWrong, Try again")
-        
+            
+        #update the no.of.turns remaining to match the word
         updated_word = wordDisplay(word, guesses)
         turns -= 1
         flag = winningCondition(updated_word, turns)
-        
+        #determine win or lose
         if flag == 0:
             print("\nYou Lose")
             print("The word was", word)
